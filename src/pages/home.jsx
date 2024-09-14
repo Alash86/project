@@ -64,7 +64,7 @@ function Home() {
             ))}
         </div>
       )}
-      {currentCards.length && (
+      {currentCards.length > 0 && (
         <Pagination
           totalCards={cards.length}
           cardsPerPage={cardPerPage}
