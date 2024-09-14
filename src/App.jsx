@@ -41,17 +41,63 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-out" element={<SignOut />} />
-          <Route path="/favourites" element={<Favorites />} />
-          <Route path="/mycards"
-            element={<ProtectedRoute onlyBiz>
-              <Mycards />
-            </ProtectedRoute>} />
+          <Route
+            path="/favourites"
+            element={
+              <ProtectedRoute onlyBiz>
+                <Favorites />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/mycards"
+            element={
+              <ProtectedRoute onlyBiz>
+                <Mycards />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/referredCard/:id" element={<ReferredCard />} />
-          <Route path="/newCard" element={<ProtectedRoute onlyBiz><NewCard /></ProtectedRoute>} />
-          <Route path="/edit/:id" element={<ProtectedRoute onlyBiz><EditCard /></ProtectedRoute>} />
-          <Route path="/user/:id" element={<ProtectedRoute onlyBiz><EditUser /></ProtectedRoute>} />
-          <Route path="/CRM" element={<ProtectedRoute onlyBiz><Crm /></ProtectedRoute>} />
-          <Route path="/referredUser/:id" element={<ProtectedRoute onlyBiz><ReferredUser /></ProtectedRoute>} />
+          <Route
+            path="/newCard"
+            element={
+              <ProtectedRoute onlyBiz>
+                <NewCard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit/:id"
+            element={
+              <ProtectedRoute onlyBiz>
+                <EditCard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user/:id"
+            element={
+              <ProtectedRoute onlyBiz>
+                <EditUser />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/CRM"
+            element={
+              <ProtectedRoute onlyAdmin>
+                <Crm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/referredUser/:id"
+            element={
+              <ProtectedRoute onlyBiz>
+                <ReferredUser />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </main>
       <Footer />

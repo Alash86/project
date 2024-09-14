@@ -1,14 +1,22 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth.context";
 
-const ProtectedRoute = ({ children, onlyBiz = false }) => {
-    const { user } = useAuth();
+const ProtectedRoute = ({ children, onlyBiz = false, onlyAdmin }) => {
+  const { user } = useAuth();
 
-    if (!user || (onlyBiz && !user.isBusiness)) {
-        return <Navigate to="/sign-in" />;
-    }
+  if (!user) {
+    return <Navigate to="/sign-in" />;
+  }
 
-    return children;
+  if (onlyBiz && !user.isBusiness) {
+    return <Navigate to="/sign-in" />;
+  }
+
+  if (onlyAdmin && !user.isAdmin) {
+    return <Navigate to="/sign-in" />;
+  }
+
+  return children;
 };
 
 export default ProtectedRoute;

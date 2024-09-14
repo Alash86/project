@@ -6,8 +6,8 @@ import Checkbox from "../components/common/checkbox";
 import useSignUp from "../components/hooks/useSignUp";
 
 function SignUp() {
-  const { user } = useAuth()
-  const { form, serverError } = useSignUp()
+  const { user } = useAuth();
+  const { form, serverError } = useSignUp();
 
   if (user) {
     return <Navigate to="/" />;
@@ -101,7 +101,9 @@ function SignUp() {
           label="country"
           required
           placeholder="country"
-          error={form.touched.address?.country && form.errors["address.country"]}
+          error={
+            form.touched.address?.country && form.errors["address.country"]
+          }
         />
         <Input
           {...form.getFieldProps("address.city")}

@@ -20,7 +20,7 @@ function Favorites() {
   } = usePagination();
 
   const currentCardsFilterd = cards.filter((card) =>
-    card.likes.includes(user._id)
+    card.likes.includes(user?._id)
   );
   const currentCards = currentCardsFilterd.slice(firstCardIndex, lastCardIndex);
 
