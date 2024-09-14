@@ -28,6 +28,10 @@ function Card({
 
   const handleLiked = () => {
     const fetchLike = async () => {
+      if (!user) {
+        return;
+      }
+
       try {
         const response = await likeCard(_id, user.token);
         setLike((prevLike) => !prevLike);

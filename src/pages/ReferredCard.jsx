@@ -9,11 +9,11 @@ import { toast } from "react-toastify";
 
 function ReferredCard() {
   const { id } = useParams();
-  const { user } = useAuth()
+  const { user } = useAuth();
   const { VITE_GOOGLE_MAPS_API_KEY: KEY } = import.meta.env;
   const [card, setCard] = useState(null);
-  const navigate = useNavigate()
-  const { handleEdit } = useTools()
+  const navigate = useNavigate();
+  const { handleEdit } = useTools();
   if (!id) {
     return;
   }
@@ -32,13 +32,13 @@ function ReferredCard() {
   const handleDelete = () => {
     const reply = confirm("are you sure you want to delete this card?");
     if (!reply) {
-      toast.info("Action Aborted")
+      toast.info("Action Aborted");
       return;
     }
     deleteCard(id);
-    navigate(-1)
-    toast.success("Deleted successfully")
-  }
+    navigate(-1);
+    toast.success("Deleted successfully");
+  };
   return (
     card && (
       <div
@@ -83,20 +83,29 @@ function ReferredCard() {
               `}
               />
             </div>
-            {user.isAdmin && <li className="list-group-item text-center" style={{ fontSize: 20 }}>
-              <a onClick={(e) => {
-                e.stopPropagation();
-                handleDelete(id);
-              }} >
-                <i className="bi bi-trash fs-2 m-4 "></i>
-              </a>
-              <a onClick={(e) => {
-                e.stopPropagation();
-                handleEdit(id);
-              }} >
-                <i className="bi bi-pencil-square fs-2 m-4"></i>
-              </a>
-            </li>}
+            {user?.isAdmin && (
+              <li
+                className="list-group-item text-center"
+                style={{ fontSize: 20 }}
+              >
+                <a
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDelete(id);
+                  }}
+                >
+                  <i className="bi bi-trash fs-2 m-4 "></i>
+                </a>
+                <a
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleEdit(id);
+                  }}
+                >
+                  <i className="bi bi-pencil-square fs-2 m-4"></i>
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </div>
