@@ -60,7 +60,7 @@ function Home() {
           {currentCards
             .filter((card) => card.title.includes(search))
             .map((card) => (
-              <Card card={card} key={card._id} />
+              <Card card={card} key={card._id} onUnlike={() => {}} />
             ))}
         </div>
       )}

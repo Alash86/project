@@ -1,6 +1,9 @@
 body {
   padding-top: 85px;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 .card {
   border-radius: 4px;
@@ -79,11 +82,9 @@ td {
   }
 }
 
-
 @media screen and (max-width: 768px) {
   .page-item.d-flex {
     flex-wrap: wrap;
-
   }
 
   form.d-flex.flex-wrap {
@@ -104,11 +105,7 @@ td {
     width: 60vw;
     font-size: 16px;
   }
-
-
 }
-
-
 
 @media screen and (max-width: 992px) {
   .navbar-expand-sm .container {
@@ -117,8 +114,6 @@ td {
   }
 
   .navbar-nav {
-    gap: 5px !important
+    gap: 5px !important;
   }
-
-
 }

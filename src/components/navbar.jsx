@@ -28,7 +28,7 @@ function NavBar() {
       }
     };
     fetchUser();
-  }, [user]);
+  }, [user, getLoggedUser]);
 
   const handleToggle = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -36,7 +36,14 @@ function NavBar() {
     setٌTheme(newTheme);
     localStorage.setItem("theme", newTheme);
   };
-
+  const handleClicked = (e) => {
+    const element = e.currentTarget;
+    if (element.classList.contains("show")) {
+      element.classList.remove("show");
+    } else {
+      element.classList.add("show");
+    }
+  };
   return (
     <nav
       className="navbar navbar-expand-sm navbar-light fixed-top bg-success shadow-sm fs-4 fw-bold"
@@ -55,10 +62,14 @@ function NavBar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon  "></span>
         </button>
 
-        <div className="collapse navbar-collapse " id="navbarsExample05">
+        <div
+          onClick={handleClicked}
+          className="collapse navbar-collapse "
+          id="navbarsExample05"
+        >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-4 ">
             <li className="nav-item">
               <NavLink to="/about" className="nav-link">
@@ -72,14 +83,13 @@ function NavBar() {
                     Fav Cards
                   </NavLink>
                 </li>
-                {(user.isBusiness ||
-                  user.isAdmin) && (
-                    <li className="nav-item">
-                      <NavLink to="/mycards" className="nav-link">
-                        MY Cards
-                      </NavLink>
-                    </li>
-                  )}
+                {(user.isBusiness || user.isAdmin) && (
+                  <li className="nav-item">
+                    <NavLink to="/mycards" className="nav-link">
+                      MY Cards
+                    </NavLink>
+                  </li>
+                )}
                 {user.isAdmin && (
                   <li className="nav-item">
                     <NavLink to="/CRM" className="nav-link">
@@ -112,7 +122,10 @@ function NavBar() {
             {user ? (
               <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
                 <li className="nav-item">
-                  <Link to={`/referredUser/${user._id}`} className="dropdown-item">
+                  <Link
+                    to={`/referredUser/${user._id}`}
+                    className="dropdown-item"
+                  >
                     <img
                       src={loggedUser}
                       alt={imageAlt}
@@ -120,8 +133,6 @@ function NavBar() {
                       className="rounded-circle mt-3 "
                     />
                   </Link>
-
-
                 </li>
 
                 <li className="nav-item">

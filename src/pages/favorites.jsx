@@ -37,7 +37,20 @@ function Favorites() {
   }, []);
 
   const handleCardRemoval = (cardId) => {
-    setCards((prevCards) => prevCards.filter((card) => card._id !== cardId));
+    setCards((prevCards) => {
+      const updatedCards = prevCards.filter((card) => card._id !== cardId);
+
+      const totalFilteredCards = updatedCards.filter((card) =>
+        card.likes.includes(user._id)
+      ).length;
+      const totalPages = Math.ceil(totalFilteredCards / cardPerPage);
+
+      if (currentPage > totalPages) {
+        setCurrentPAge(totalPages);
+      }
+
+      return updatedCards;
+    });
   };
   return (
     <div className="container ">
@@ -45,6 +58,7 @@ function Favorites() {
         title="Favorite Cards"
         description="Here are your favorite business cards"
       />
+
       {cards.length === 0 && (
         <div>
           <p className="fs-4"> There are no favorite cards you liked </p>

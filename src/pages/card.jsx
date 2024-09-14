@@ -3,16 +3,26 @@ import { useAuth } from "../contexts/auth.context";
 import { likeCard } from "../services/cardsService";
 import useTools from "../components/hooks/useTools";
 import { deleteCard } from "../services/cardsService";
-
+import { toast } from "react-toastify";
 
 function Card({
-  card: { _id, image: { url, alt }, title, subtitle, likes, description, phone, user_id },
-  onUnlike, onDelete
+  card: {
+    _id,
+    image: { url, alt },
+    title,
+    subtitle,
+    likes,
+    description,
+    phone,
+    user_id,
+  },
+  onUnlike,
+  onDelete,
 }) {
   const { user } = useAuth();
   const onlineUser = user;
 
-  const { handleClicked, handleEdit } = useTools()
+  const { handleClicked, handleEdit } = useTools();
 
   const [like, setLike] = useState(user ? likes.includes(user._id) : false);
 
@@ -34,22 +44,21 @@ function Card({
   const handleDelete = () => {
     const reply = confirm("are you sure you want to delete this card?");
     if (!reply) {
+      toast.info("Action Aborted");
       return;
     }
     deleteCard(_id);
-    onDelete(_id)
-
+    onDelete(_id);
   };
-
 
   return (
     <div
       onClick={() => {
-        handleClicked(_id)
+        handleClicked(_id);
       }}
       key={_id}
       className="card card-hover gap-1 hover border-3 "
-      style={{ maxWidth: 400, height: 500, }}
+      style={{ maxWidth: 400, height: 500 }}
     >
       <img src={url} className="card-img-top h-50 " alt={alt} />
       <div className="card-body">
@@ -66,14 +75,15 @@ function Card({
         </li>
         <li className="list-group-item d-flex justify-content-evenly ">
           {user && (user_id === onlineUser._id || onlineUser.isAdmin) ? (
-            <><a
-              onClick={(e) => {
-                e.stopPropagation();
-                handleDelete(_id);
-              }}
-            >
-              <i className="bi bi-trash fs-2"></i>
-            </a>
+            <>
+              <a
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDelete(_id);
+                }}
+              >
+                <i className="bi bi-trash fs-2"></i>
+              </a>
               <a
                 onClick={(e) => {
                   e.stopPropagation();

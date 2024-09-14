@@ -4,12 +4,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/auth.context";
 import useNewCard from "../components/hooks/useNewCard";
+import { toast } from "react-toastify";
 
 function NewCard() {
   const navigate = useNavigate();
 
   const handleCancel = () => {
     navigate("/mycards");
+    toast.info("Action Abroted");
   };
   const { form, serverError } = useNewCard();
 
