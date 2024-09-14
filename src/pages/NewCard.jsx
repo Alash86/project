@@ -148,12 +148,12 @@ function NewCard() {
           <button
             type="submit"
             disabled={!form.isValid}
-            className="btn btn-primary m-2"
+            className="btn btn-primary m-4"
           >
             Add Card
           </button>
 
-          <button className="btn btn-danger m-2" onClick={handleCancel}>
+          <button className="btn btn-danger m-4" onClick={handleCancel}>
             Cancel
           </button>
         </div>
