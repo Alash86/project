@@ -37,7 +37,11 @@ function Card({
         setLike((prevLike) => !prevLike);
         if (like) {
           onUnlike(_id);
+          toast.success("Card removed from Favorites");
+        } else {
+          toast.success("Added to Favorites");
         }
+
         return response;
       } catch (error) {
         console.error("error retrieving like/unlike status ", error);
