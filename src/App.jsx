@@ -41,14 +41,7 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-out" element={<SignOut />} />
-          <Route
-            path="/favourites"
-            element={
-              <ProtectedRoute onlyBiz>
-                <Favorites />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/favourites" element={<Favorites />} />
           <Route
             path="/mycards"
             element={
@@ -74,14 +67,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/user/:id"
-            element={
-              <ProtectedRoute onlyBiz>
-                <EditUser />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/user/:id" element={<EditUser />} />
           <Route
             path="/CRM"
             element={
@@ -90,14 +76,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/referredUser/:id"
-            element={
-              <ProtectedRoute onlyBiz>
-                <ReferredUser />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/referredUser/:id" element={<ReferredUser />} />
         </Routes>
       </main>
       <Footer />

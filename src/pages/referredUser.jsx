@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function ReferredUser() {
-  const { id } = useParams();
   const { user } = useAuth();
+  const { id } = useParams();
+
   const { getUserByID, deleteUserByID, editBizUser } = useAuth();
   const { VITE_GOOGLE_MAPS_API_KEY: KEY } = import.meta.env;
   const [refUser, setRefUser] = useState(null);
