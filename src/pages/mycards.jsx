@@ -58,7 +58,9 @@ function Mycards() {
       {cards.length > 0 ? (
         <div className="d-flex w-70 justify-center m-auto gap-5 mb-5 flex-wrap h-50">
           {currentCards
-            .filter((card) => card.title.includes(search))
+            .filter((card) =>
+              card.title.toLowerCase().includes(search.toLowerCase())
+            )
             .map((card) => (
               <Card
                 card={card}
