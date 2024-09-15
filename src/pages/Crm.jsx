@@ -89,7 +89,6 @@ function Crm() {
               ).toLocaleDateString();
               return (
                 <tr
-                  className="fs-5"
                   key={card._id}
                   onClick={() => {
                     handleNavigate(card._id);
@@ -121,7 +120,6 @@ function Crm() {
             .filter((User) => User.name.first.includes(search))
             .map((User) => (
               <tr
-                className="fs-5"
                 key={User._id}
                 onClick={() => {
                   handleNavigateUser(User._id);

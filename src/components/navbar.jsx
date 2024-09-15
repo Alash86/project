@@ -100,7 +100,8 @@ function NavBar() {
               </>
             )}
           </ul>
-          <Search />
+
+          <Search onClick={(e) => e.stopPropagation()} />
 
           <span className="visually-hidden" id="bd-theme-text">
             Toggle theme
